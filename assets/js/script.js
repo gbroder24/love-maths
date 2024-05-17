@@ -37,6 +37,7 @@ function runGame(gameType) {
     // Creates two random numbers between 1 and 25
     let num1 = Math.floor(Math.random() * 25) + 1;
     let num2 = Math.floor(Math.random() * 25) + 1;
+    let num3 = num1 * num2;
 
     if (gameType === "addition") {
         displayAdditionQuestion(num1, num2);
@@ -45,7 +46,7 @@ function runGame(gameType) {
     } else if (gameType === "multiply") {
         displayMultiplyQuestion(num1, num2);
     } else if (gameType === "division") {
-        displayDivisionQuestion(num1, num2);
+        displayDivisionQuestion(num1, num3);
     } else {
         alert(`Unknown game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!`;
@@ -92,7 +93,7 @@ function calculateCorrectAnswer() {
     } else if (operator === "x") {
         return [operand1 * operand2, "multiply"];
     } else if (operator === "/") {
-        return [Math.floor(operand1 / operand2), "division"];
+        return [operand1 / operand2, "division"];
     } else {
         alert(`Unimplemented operator ${operator}`);
         throw `Unimplemented operator ${operator}. Aborting!`;
